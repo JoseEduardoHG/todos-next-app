@@ -1,4 +1,4 @@
-name: CI & CD
+name: CI
 
 on:
   push:
@@ -102,40 +102,3 @@ jobs:
 
       - name: Run tests
         run: pnpm test
-
-  deploy:
-    name: Run Deploy
-    needs:
-      - build
-      - lint
-      - test
-    if: ${{ github.event_name == 'push' && success() }}
-    runs-on: ubuntu-latest
-    env:
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '21'
-          cache: 'pnpm'
-
-      - name: Install Vercel CLI
-        run: pnpm add --global vercel
-
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-
-      - name: Build Project Artifacts
-        run: vercel build --prod --token=$VERCEL_TOKEN
-
-      - name: Deploy Project Artifacts
-        run: vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
