@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .header {
+    @apply flex items-center
+      w-full h-16 px-4 bg-green-200;
+  }
+}
+
+@layer utilities {
+  .title {
+    @apply font-black text-3xl;
+  }
+}

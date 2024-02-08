@@ -4,10 +4,8 @@ type HeaderProps = {
 
 export default function Header({ title }: HeaderProps) {
   return (
-    <header className=''>
-      <div className=''>
-        <h1>{title?.toUpperCase()}</h1>
-      </div>
+    <header className='header'>
+      <h1 className='title'>{title?.toUpperCase()}</h1>
     </header>
   );
 }
