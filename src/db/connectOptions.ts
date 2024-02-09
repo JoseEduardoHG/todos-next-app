@@ -6,6 +6,7 @@ const connectOptions: ConnectOptions = {
     password: env.MONGO_PASSWORD,
     username: env.MONGO_USERNAME,
   },
+  dbName: env.MONGO_DATABASE,
 };
 
 export default connectOptions;

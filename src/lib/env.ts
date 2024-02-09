@@ -5,6 +5,7 @@ const envSchema = z.object({
   NODE_ENV: z.string().min(1).default('development'),
   MONGO_USERNAME: z.string().min(1),
   MONGO_PASSWORD: z.string().min(1),
+  MONGO_DATABASE: z.string().min(1),
   MONGO_URL: z.string().min(1),
 });
 
