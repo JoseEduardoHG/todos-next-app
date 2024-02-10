@@ -4,7 +4,7 @@ env:
   MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
   MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
   MONGO_DATABASE: ${{ secrets.MONGO_DATABASE }}
-  MONGO_URL: ${{ secrets.MONGO_URI }}
+  MONGO_URL: ${{ secrets.MONGO_URL }}
 
 on:
   push:
@@ -41,6 +41,7 @@ jobs:
     name: Run Build
     needs: changed-files
     if: fromJSON(needs.changed-files.outputs.run-checks)
+    environment: Development
     runs-on: ubuntu-latest
 
     steps:
