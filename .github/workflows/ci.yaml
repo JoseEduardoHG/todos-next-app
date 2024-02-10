@@ -41,7 +41,6 @@ jobs:
     name: Run Build
     needs: changed-files
     if: fromJSON(needs.changed-files.outputs.run-checks)
-    environment: Development
     runs-on: ubuntu-latest
 
     steps:
