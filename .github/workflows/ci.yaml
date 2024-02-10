@@ -1,5 +1,11 @@
 name: CI
 
+env:
+  MONGO_USERNAME: ${{ secrets.MONGO_USERNAME }}
+  MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
+  MONGO_DATABASE: ${{ secrets.MONGO_DATABASE }}
+  MONGO_URL: ${{ secrets.MONGO_URI }}
+
 on:
   push:
     branches:
