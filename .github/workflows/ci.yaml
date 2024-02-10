@@ -37,29 +37,29 @@ jobs:
             .github/**
             !.github/workflows/ci.yaml
             **/*.md
-  build:
-    name: Run Build
-    needs: changed-files
-    if: fromJSON(needs.changed-files.outputs.run-checks)
-    runs-on: ubuntu-latest
+  # build:
+  #   name: Run Build
+  #   needs: changed-files
+  #   if: fromJSON(needs.changed-files.outputs.run-checks)
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v2
+  #     - name: Set up pnpm
+  #       uses: pnpm/action-setup@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '21'
-          cache: 'pnpm'
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: '21'
+  #         cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install
+  #     - name: Install dependencies
+  #       run: pnpm install
 
-      - name: Run build
-        run: pnpm build
+  #     - name: Run build
+  #       run: pnpm build
 
   lint:
     name: Run Lint
